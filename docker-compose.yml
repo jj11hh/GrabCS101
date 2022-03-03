@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    restart: always
+    build: .
+    ports:
+      - "443:443"
+    volumes: 
+      - /etc/letsencrpt/live/cs101.fengtao.xyz:/certs
+      - www:/var/www
+    command: uvicorn serve:app --certfile /certs/fullchain.pem --keyfile /certs/privkey.pem

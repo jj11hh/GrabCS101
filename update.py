@@ -1,3 +1,4 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 from collections import deque
@@ -5,7 +6,11 @@ from typing import Deque, Tuple
 from enum import Enum
 
 INDEX_URL = "https://introcomputing.org/"
-SAVE_FOLDER = "./"
+SAVE_FOLDER = "./static/"
+
+# if save folder is not exist, create it
+if not os.path.exists(SAVE_FOLDER):
+    os.makedirs(SAVE_FOLDER)
 
 # download the index page
 index_html = requests.get(INDEX_URL)
