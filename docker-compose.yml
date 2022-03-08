@@ -1,11 +1,9 @@
 version: '3'
 services:
-  web:
+  cs101_server:
     restart: always
     build: .
-    ports:
-      - "443:443"
-    volumes: 
-      - /etc/letsencrpt/live/cs101.fengtao.xyz:/certs
-      - www:/var/www
-    command: uvicorn serve:app --certfile /certs/fullchain.pem --keyfile /certs/privkey.pem
+    command: uvicorn serve:app --port 8080
+  candy_reverse:
+    image: candy
+    command: caddy reverse_proxy --from cs101.fengtao.xyz --to cs101_server:8080
