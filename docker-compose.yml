@@ -5,5 +5,8 @@ services:
     build: .
     command: uvicorn serve:app --port 8080
   candy_reverse:
-    image: candy
+    image: candy:latest
+    ports:
+      - "80:80"
+      - "443:443"
     command: caddy reverse_proxy --from cs101.fengtao.xyz --to cs101_server:8080
