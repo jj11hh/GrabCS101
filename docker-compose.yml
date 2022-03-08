@@ -4,8 +4,8 @@ services:
     restart: always
     build: .
     command: uvicorn serve:app --port 8080
-  candy_reverse:
-    image: candy:latest
+  caddy_reverse:
+    image: caddy:latest
     ports:
       - "80:80"
       - "443:443"
