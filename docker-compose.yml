@@ -9,4 +9,4 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    command: caddy reverse_proxy --from cs101.fengtao.xyz --to cs101_server:8080
+    command: caddy reverse-proxy --from cs101.fengtao.xyz --to cs101_server:8080
